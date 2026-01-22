@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drenagem do Zero | Tanya Pires</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset Minimalista */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #ffffff;
+            background: #0a0a0a;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Layout */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        /* Hero */
+        .hero {
+            padding-top: 80px;
+            text-align: center;
+        }
+        
+        .headline {
+            font-size: 3rem;
+            font-weight: 300;
+            color: #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .headline strong {
+            font-weight: 600;
+            color: #FFD700;
+            position: relative;
+        }
+        
+        .headline strong::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #FFD700;
+            opacity: 0.3;
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: #b0b0b0;
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+        
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 18px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary {
+            background: #FFD700;
+            color: #0a0a0a;
+            box-shadow: 0 4px 25px rgba(255, 215, 0, 0.25);
+        }
+        
+        .btn-primary:hover {
+            background: #ffed4a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 30px rgba(255, 215, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        /* Conteúdo */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: #FFD700;
+        }
+        
+        .learning-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .learning-item {
+            background: #1a1a1a;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .learning-item:hover {
+            transform: translateY(-8px);
+            border-color: #FFD700;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .learning-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #FFD700;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .learning-item:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .item-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #FFD700;
+            color: #0a0a0a;
+            border-radius: 50%;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .item-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        
+        .item-desc {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: #111;
+            margin-top: 60px;
+        }
+        
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .testimonial-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            border-color: #FFD700;
+        }
+        
+        .testimonial-header {
+            padding: 20px;
+            background: #222;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #FFD700;
+            color: #0a0a0a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .testimonial-info h4 {
+            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-info p {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+        }
+        
+        .testimonial-content {
+            padding: 20px;
+        }
+        
+        .testimonial-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ddd;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .testimonial-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 1px solid #444;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+            background: #2a2a2a;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFD700;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .testimonial-image:hover {
+            transform: scale(1.02);
+        }
+        
+        /* Ebook Preview */
+        .ebook-preview {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 20px;
+            padding: 70px;
+            margin: 80px auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+        
+        .ebook-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #FFD700, #ffed4a);
+        }
+        
+        .ebook-cover {
+            width: 220px;
+            height: 300px;
+            margin: 0 auto 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            border: 2px solid #FFD700;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .ebook-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ebook-title {
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .ebook-author {
+            color: #FFD700;
+            margin-bottom: 30px;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+        
+        .feature-tag {
+            background: rgba(255, 215, 0, 0.15);
+            color: #FFD700;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+        
+        .price {
+            font-size: 3.5rem;
+            font-weight: 600;
+            color: #FFD700;
+            margin: 40px 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .price small {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            font-weight: 400;
+        }
+        
+        .price-currency {
+            font-size: 1.8rem;
+            color: #b0b0b0;
+            margin-right: 5px;
+        }
+        
+        /* Garantia */
+        .guarantee {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            color: #b0b0b0;
+            font-size: 1rem;
+            margin-top: 60px;
+            padding-top: 60px;
+            border-top: 1px solid #333;
+            flex-wrap: wrap;
+        }
+        
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+            margin-top: 80px;
+        }
+        
+        .footer a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: #ffed4a;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 2.5rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 320px;
+                padding: 20px 30px;
+            }
+            
+            .learning-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .ebook-preview {
+                padding: 40px 25px;
+                margin: 60px 10px;
+            }
+            
+            .features-list {
+                gap: 10px;
+            }
+            
+            .price {
+                font-size: 2.8rem;
+            }
+            
+            .guarantee {
+                gap: 20px;
+                flex-direction: column;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .headline {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .learning-item {
+                padding: 25px;
+            }
+            
+            .testimonial-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+            
+            .ebook-cover {
+                width: 180px;
+                height: 250px;
+            }
+        }
+        
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero, .learning-item, .ebook-preview, .testimonial-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Efeito de brilho sutil */
+        .glow {
+            position: relative;
+        }
+        
+        .glow::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #FFD700, #ffed4a, #FFD700);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+        }
+        
+        .btn-primary.glow:hover::after {
+            opacity: 0.3;
+        }
+        
+        /* Linha decorativa sutil */
+        .hero-decoration {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.3), transparent);
+            margin: 60px auto;
+            max-width: 400px;
+        }
+        
+        /* Tag de destaque minimalista */
+        .highlight-tag {
+            display: inline-block;
+            color: #FFD700;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            background: rgba(255, 215, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1 class="headline">Domine a <strong>Drenagem Linfática</strong> do Zero</h1>
+            
+            <div class="highlight-tag">
+                <i class="fas fa-graduation-cap"></i> Método TP de Tanya Pires
+            </div>
+            
+            <p class="subtitle">Aprenda técnicas profissionais explicadas passo a passo para iniciantes. Transforme sua prática com conhecimento aplicado e resultados comprovados.</p>
+            
+            <div class="cta-group">
+                <a href="#ebook" class="btn btn-primary glow">
+                    <i class="fas fa-book-open"></i> Ver Conteúdo
+                </a>
+                <a href="#testimonials" class="btn btn-secondary">
+                    <i class="fas fa-star"></i> Ver Depoimentos
+                </a>
+            </div>
+            
+            <div class="hero-decoration"></div>
+        </section>
+        
+        <!-- Conteúdo -->
+        <section>
+            <h2 class="section-title">O Que Vai Aprender</h2>
+            
+            <div class="learning-grid">
+                <div class="learning-item">
+                    <div class="item-number">01</div>
+                    <h3 class="item-title">Fundamentos Científicos</h3>
+                    <p class="item-desc">Compreenda a anatomia e fisiologia do sistema linfático. Aprenda os princípios científicos que tornam as técnicas eficazes.</p>
+                </div>
+                
+                <div class="learning-item">
+                    <div class="item-number">02</div>
+                    <h3 class="item-title">Técnicas Práticas</h3>
+                    <p class="item-desc">Domine movimentos específicos: círculo estacionário, bombeamento, varredura e drenagem em sequências lógicas.</p>
+                </div>
+                
+                <div class="learning-item">
+                    <div class="item-number">03</div>
+                    <h3 class="item-title">Protocolos Seguros</h3>
+                    <p class="item-desc">Aprenda indicações, contraindicações e protocolos completos para aplicar com total segurança e profissionalismo.</p>
+                </div>
+                
+                <div class="learning-item">
+                    <div class="item-number">04</div>
+                    <h3 class="item-title">Aplicações Avançadas</h3>
+                    <p class="item-desc">Desde tratamentos terapêuticos até aplicações estéticas como desinchaço facial, corporal e pós-operatório.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="testimonials-container">
+                <h2 class="section-title">Resultados Reais</h2>
+                
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">E</div>
+                            <div class="testimonial-info">
+                                <h4>Egidia Miguel</h4>
+                                <p>Fisioterapeuta | Luanda</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="testimonial-image">
+                                <img src="WhatsApp Image 2026-01-22 at 15.56.53.jpeg" alt="" width="300" >
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">J</div>
+                            <div class="testimonial-info">
+                                <h4>Juliana Fundo</h4>
+                                <p>Fisioterapeuta | Alemanha</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="testimonial-image">
+                              <img src="l.jpeg" alt="" width="300" >
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">A</div>
+                            <div class="testimonial-info">
+                                <h4>Isabel Eunice</h4>
+                                <p>Fisioterapeuta | Luanda</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="testimonial-image">
+                                <img src="e.jpeg" alt="" width="300" >
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">E</div>
+                            <div class="testimonial-info">
+                                <h4>Evodia João</h4>
+                                <p>Naturopata | Luanda</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-content">
+                            <div class="testimonial-image">
+                                <img src="EV.jpeg" alt="" width="300" >
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Ebook Preview -->
+        <section id="ebook">
+            <div class="ebook-preview">
+                <div class="ebook-cover">
+                    <img src="capa.png" alt="Capa do Ebook Drenagem do Zero" width="230" height="300">
+                </div>
+                
+                <h3 class="ebook-title">Drenagem do Zero - Método TP</h3>
+                <div class="ebook-author">por Tanya Pires</div>
+                
+                <div class="features-list">
+                    <span class="feature-tag">30+ páginas </span>
+                    <span class="feature-tag">Para iniciantes</span>
+                    <span class="feature-tag">Conteúdo prático</span>
+                </div>
+                
+                <div class="price">
+                    <span class="price-currency">Kz</span>
+                    <span>5.000</span>
+                    <small>,00</small>
+                </div>
+                
+                <div class="cta-group" style="margin-bottom: 30px;">
+                    <a href="https://pay.kuenha.com/819a934f-78aa-45b4-a542-2410209e6278" class="btn btn-primary glow" style="padding: 20px 40px;">
+                        <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    </a>
+                </div>
+                
+                <div style="margin-top: 20px; color: #b0b0b0; font-size: 0.9rem;">
+    
+                    <p style="margin-top: 5px;"><i class="fas fa-bolt" style="color: #FFD700; margin-right: 8px;"></i> Acesso imediato após pagamento</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Garantia -->
+        <div class="guarantee">
+            <div class="guarantee-item">
+                <i class="fas fa-lock" style="color: #FFD700; font-size: 1.2rem;"></i>
+                <span>Pagamento 100% seguro</span>
+            </div>
+            <div class="guarantee-item">
+                <i class="fas fa-bolt" style="color: #FFD700; font-size: 1.2rem;"></i>
+                <span>Acesso imediato</span>
+            </div>
+            
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 Drenagem do Zero | Método TP de Tanya Pires</p>
+            <p style="margin-top: 10px;">
+                Página criada por <a href="#" target="_blank">Elevate</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Efeitos interativos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efeito de brilho nos botões
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                });
+                
+                btn.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+                
+                // Feedback tátil para mobile
+                btn.addEventListener('touchstart', function() {
+                    this.style.opacity = '0.9';
+                });
+                
+                btn.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 200);
+                });
+            });
+            
+            // Efeito hover nos cards de aprendizagem
+            const learningItems = document.querySelectorAll('.learning-item');
+            learningItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
