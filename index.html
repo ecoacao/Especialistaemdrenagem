@@ -488,8 +488,8 @@
         .modal-content {
             position: relative;
             width: 90%;
-            max-width: 400px; /* Mais estreito para formato vertical (9:16) */
-            aspect-ratio: 9 / 16; /* Proporção vertical para Shorts */
+            max-width: 400px;
+            aspect-ratio: 9 / 16;
             background: var(--bg-dark);
             border-radius: 24px;
             overflow: hidden;
@@ -537,6 +537,185 @@
             width: 100%;
             height: 100%;
             border: none;
+        }
+
+        /* Payment Modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .payment-modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .payment-content {
+            position: relative;
+            width: 90%;
+            max-width: 500px;
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 2.5rem;
+            border: 2px solid var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .payment-modal.show .payment-content {
+            transform: scale(1);
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .payment-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-header p {
+            color: var(--text-secondary);
+        }
+
+        .payment-details {
+            background: var(--bg-dark);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .detail-info {
+            flex: 1;
+        }
+
+        .detail-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+
+        .detail-value {
+            font-size: 1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .detail-value.highlight {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .payment-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            margin: 1.5rem 0;
+            opacity: 0.3;
+        }
+
+        .payment-message {
+            background: rgba(255, 215, 0, 0.1);
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-message p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .payment-message i {
+            color: var(--primary);
+            margin-right: 0.5rem;
+        }
+
+        .whatsapp-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 1rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            margin-bottom: 1rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn i {
+            font-size: 1.2rem;
+        }
+
+        .close-payment {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            color: var(--text-secondary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-payment:hover {
+            color: var(--primary);
         }
 
         /* Navigation Buttons */
@@ -898,6 +1077,10 @@
                 top: -50px;
                 right: 0;
             }
+
+            .payment-content {
+                padding: 2rem 1.5rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -938,6 +1121,15 @@
 
             .modal-content {
                 max-width: 350px;
+            }
+
+            .detail-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .detail-icon {
+                margin-bottom: 0.5rem;
             }
         }
 
@@ -1015,7 +1207,7 @@
         </div>
     </section>
 
-    <!-- Video Testimonials Section - Instagram Stories Style -->
+    <!-- Video Testimonials Section - Apenas 3 vídeos -->
     <section class="video-testimonials">
         <div class="container">
             <h2 class="section-title">Depoimentos em Vídeo</h2>
@@ -1028,8 +1220,6 @@
             <div class="swiper video-swiper">
                 <div class="swiper-wrapper">
                     <!-- Video Slide 1 - Isabel Eunice -->
-                    <!-- Link: https://youtube.com/shorts/_o3p2n6Ixwc -->
-                    <!-- ID: _o3p2n6Ixwc -->
                     <div class="swiper-slide video-slide" data-video-id="_o3p2n6Ixwc">
                         <div class="video-card">
                             <div class="video-thumbnail">
@@ -1056,8 +1246,6 @@
                     </div>
 
                     <!-- Video Slide 2 - Evodia João -->
-                    <!-- Link: https://www.youtube.com/shorts/lhdXnsRKBCg -->
-                    <!-- ID: lhdXnsRKBCg -->
                     <div class="swiper-slide video-slide" data-video-id="lhdXnsRKBCg">
                         <div class="video-card">
                             <div class="video-thumbnail">
@@ -1084,8 +1272,6 @@
                     </div>
 
                     <!-- Video Slide 3 - Sra Santa -->
-                    <!-- Link: https://www.youtube.com/shorts/zXo0kl5QEBs -->
-                    <!-- ID: zXo0kl5QEBs -->
                     <div class="swiper-slide video-slide" data-video-id="zXo0kl5QEBs">
                         <div class="video-card">
                             <div class="video-thumbnail">
@@ -1110,7 +1296,6 @@
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
                 
                 <!-- Navigation -->
@@ -1133,42 +1318,86 @@
         </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div id="paymentModal" class="payment-modal">
+        <div class="payment-content">
+            <span class="close-payment">&times;</span>
+            
+            <div class="payment-header">
+                <h3>Detalhes do Pagamento</h3>
+                <p>Ebook Drenagem do Zero - Método TP</p>
+            </div>
+
+            <div class="payment-details">
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="detail-info">
+                        <div class="detail-label">Titular da Conta</div>
+                        <div class="detail-value highlight">Victor Hugo Pires Amaro de Jesus</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="detail-info">
+                        <div class="detail-label">IBAN (BAI)</div>
+                        <div class="detail-value">AO06 0040 0008 8042 6421 0191</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="detail-info">
+                        <div class="detail-label">Contacto para Comprovativo</div>
+                        <div class="detail-value highlight">+244 940 548 881</div>
+                    </div>
+                </div>
+
+                <div class="detail-item">
+                    <div class="detail-icon">
+                        <i class="fas fa-tag"></i>
+                    </div>
+                    <div class="detail-info">
+                        <div class="detail-label">Valor</div>
+                        <div class="detail-value highlight">Kz 5.000,00</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="payment-message">
+                <p>
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Instruções:</strong> Faça o pagamento para o IBAN acima e envie o comprovativo para o número 
+                    <strong>+244 940 548 881</strong> via WhatsApp. Após confirmação, você receberá o acesso imediato ao ebook.
+                </p>
+            </div>
+
+            <a href="https://wa.me/244940548881?text=Olá! Acabei de fazer o pagamento do ebook Drenagem do Zero. Segue em anexo o comprovativo." 
+               class="whatsapp-btn" 
+               target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                Enviar Comprovativo via WhatsApp
+            </a>
+
+            <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem;">
+                <i class="fas fa-lock" style="color: var(--primary); margin-right: 0.3rem;"></i>
+                Pagamento 100% seguro
+            </p>
+        </div>
+    </div>
+
     <!-- Text Testimonials Section -->
     <section id="testimonials">
         <div class="container">
             <h2 class="section-title">Resultados Reais</h2>
             
             <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">E</div>
-                        <div class="testimonial-info">
-                            <h4>Egidia Miguel</h4>
-                            <p>Fisioterapeuta | Luanda</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="testimonial-image">
-                            <img src="WhatsApp Image 2026-01-22 at 15.56.53.jpeg" alt="Depoimento de Egidia Miguel" style="width: 100%; height: auto;">
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">J</div>
-                        <div class="testimonial-info">
-                            <h4>Juliana Fundo</h4>
-                            <p>Fisioterapeuta | Alemanha</p>
-                        </div>
-                    </div>
-                    <div class="testimonial-content">
-                        <div class="testimonial-image">
-                            <img src="l.jpeg" alt="Depoimento de Juliana Fundo" style="width: 100%; height: auto;">
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">I</div>
@@ -1225,9 +1454,9 @@
                     <small>,00</small>
                 </div>
                 
-                <a href="https://pay.kuenha.com/819a934f-78aa-45b4-a542-2410209e6278" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1.1rem;">
+                <button id="comprarBtn" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1.1rem;">
                     <i class="fas fa-shopping-cart"></i> Comprar Agora
-                </a>
+                </button>
                 
                 <div style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
                     <p><i class="fas fa-bolt" style="color: var(--primary); margin-right: 0.5rem;"></i> Acesso imediato após pagamento</p>
@@ -1321,46 +1550,71 @@
             });
 
             // Video Modal functionality
-            const modal = document.getElementById('videoModal');
+            const videoModal = document.getElementById('videoModal');
             const modalIframe = document.getElementById('youtubeFrame');
-            const closeBtn = document.querySelector('.close-modal');
+            const closeVideoBtn = document.querySelector('.close-modal');
             
-            // Open modal when video card is clicked
+            // Open video modal when video card is clicked
             document.querySelectorAll('.video-slide').forEach(slide => {
                 slide.addEventListener('click', function() {
                     const videoId = this.getAttribute('data-video-id');
-                    if (videoId && videoId !== '') {
-                        // Construct YouTube embed URL with autoplay for Shorts
+                    if (videoId) {
                         modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
-                        modal.classList.add('show');
-                        document.body.style.overflow = 'hidden'; // Prevent scrolling
-                    } else {
-                        alert('Vídeo será adicionado em breve!');
+                        videoModal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
                     }
                 });
             });
 
-            // Close modal function
-            function closeModal() {
-                modal.classList.remove('show');
-                modalIframe.src = ''; // Stop video
-                document.body.style.overflow = ''; // Restore scrolling
+            // Close video modal function
+            function closeVideoModal() {
+                videoModal.classList.remove('show');
+                modalIframe.src = '';
+                document.body.style.overflow = '';
             }
 
-            // Close on X click
-            closeBtn.addEventListener('click', closeModal);
+            closeVideoBtn.addEventListener('click', closeVideoModal);
 
-            // Close on outside click
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    closeModal();
+            videoModal.addEventListener('click', function(e) {
+                if (e.target === videoModal) {
+                    closeVideoModal();
                 }
             });
 
-            // Close on ESC key
+            // Payment Modal functionality
+            const paymentModal = document.getElementById('paymentModal');
+            const comprarBtn = document.getElementById('comprarBtn');
+            const closePaymentBtn = document.querySelector('.close-payment');
+
+            // Open payment modal when Comprar button is clicked
+            comprarBtn.addEventListener('click', function() {
+                paymentModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close payment modal function
+            function closePaymentModal() {
+                paymentModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+
+            closePaymentBtn.addEventListener('click', closePaymentModal);
+
+            paymentModal.addEventListener('click', function(e) {
+                if (e.target === paymentModal) {
+                    closePaymentModal();
+                }
+            });
+
+            // Close on ESC key for both modals
             document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('show')) {
-                    closeModal();
+                if (e.key === 'Escape') {
+                    if (videoModal.classList.contains('show')) {
+                        closeVideoModal();
+                    }
+                    if (paymentModal.classList.contains('show')) {
+                        closePaymentModal();
+                    }
                 }
             });
 
