@@ -488,10 +488,10 @@
         .modal-content {
             position: relative;
             width: 90%;
-            max-width: 900px;
-            aspect-ratio: 16 / 9;
+            max-width: 400px; /* Mais estreito para formato vertical (9:16) */
+            aspect-ratio: 9 / 16; /* Proporção vertical para Shorts */
             background: var(--bg-dark);
-            border-radius: 16px;
+            border-radius: 24px;
             overflow: hidden;
             border: 2px solid var(--primary);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
@@ -935,6 +935,10 @@
             .price {
                 font-size: 2.5rem;
             }
+
+            .modal-content {
+                max-width: 350px;
+            }
         }
 
         /* Accessibility */
@@ -1023,12 +1027,13 @@
         <div class="video-carousel-container">
             <div class="swiper video-swiper">
                 <div class="swiper-wrapper">
-                    <!-- Video Slide 1 - Egidia Miguel -->
-                    <!-- SUBSTITUA 'VIDEO_ID_EGIDIA' PELO ID DO VÍDEO DA EGIDIA -->
-                    <div class="swiper-slide video-slide" data-video-id="VIDEO_ID_EGIDIA">
+                    <!-- Video Slide 1 - Isabel Eunice -->
+                    <!-- Link: https://youtube.com/shorts/_o3p2n6Ixwc -->
+                    <!-- ID: _o3p2n6Ixwc -->
+                    <div class="swiper-slide video-slide" data-video-id="_o3p2n6Ixwc">
                         <div class="video-card">
                             <div class="video-thumbnail">
-                                <img src="https://img.youtube.com/vi/VIDEO_ID_EGIDIA/maxresdefault.jpg" alt="Thumbnail do vídeo de Egidia Miguel">
+                                <img src="https://img.youtube.com/vi/_o3p2n6Ixwc/maxresdefault.jpg" alt="Thumbnail do vídeo de Isabel Eunice">
                                 <div class="play-button">
                                     <i class="fas fa-play"></i>
                                 </div>
@@ -1036,34 +1041,7 @@
                             <div class="video-info">
                                 <div class="video-client">
                                     <div class="client-avatar">
-                                        <img src="https://ui-avatars.com/api/?name=Egidia+Miguel&background=FFD700&color=000&size=40" alt="Egidia Miguel">
-                                    </div>
-                                    <div class="client-details">
-                                        <div class="client-name">Egidia Miguel</div>
-                                        <div class="client-title">Fisioterapeuta · Luanda</div>
-                                    </div>
-                                </div>
-                                <div class="video-caption">
-                                    "Técnicas incríveis que transformaram minha abordagem profissional!"
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video Slide 2 - Isabel Eunice -->
-                    <!-- SUBSTITUA 'VIDEO_ID_ISABEL' PELO ID DO VÍDEO DA ISABEL -->
-                    <div class="swiper-slide video-slide" data-video-id="VIDEO_ID_ISABEL">
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://img.youtube.com/vi/VIDEO_ID_ISABEL/maxresdefault.jpg" alt="Thumbnail do vídeo de Isabel Eunice">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <div class="video-client">
-                                    <div class="client-avatar">
-                                        <img src="https://youtube.com/shorts/_o3p2n6Ixwc?si=QVk8YIE8ozeIf810" alt="Isabel Eunice">
+                                        <img src="https://ui-avatars.com/api/?name=Isabel+Eunice&background=FFD700&color=000&size=40" alt="Isabel Eunice">
                                     </div>
                                     <div class="client-details">
                                         <div class="client-name">Isabel Eunice</div>
@@ -1077,66 +1055,13 @@
                         </div>
                     </div>
 
-                    <!-- Video Slide 3 - Sra Santa -->
-                    <!-- SUBSTITUA 'VIDEO_ID_SANTA' PELO ID DO VÍDEO DA SRA SANTA -->
-                    <div class="swiper-slide video-slide" data-video-id="VIDEO_ID_SANTA">
+                    <!-- Video Slide 2 - Evodia João -->
+                    <!-- Link: https://www.youtube.com/shorts/lhdXnsRKBCg -->
+                    <!-- ID: lhdXnsRKBCg -->
+                    <div class="swiper-slide video-slide" data-video-id="lhdXnsRKBCg">
                         <div class="video-card">
                             <div class="video-thumbnail">
-                                <img src="https://img.youtube.com/vi/VIDEO_ID_SANTA/maxresdefault.jpg" alt="Thumbnail do vídeo da Sra Santa">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <div class="video-client">
-                                    <div class="client-avatar">
-                                        <img src="https://ui-avatars.com/api/?name=Sra+Santa&background=FFD700&color=000&size=40" alt="Sra Santa">
-                                    </div>
-                                    <div class="client-details">
-                                        <div class="client-name">Sra Santa</div>
-                                        <div class="client-title">Cliente · Luanda</div>
-                                    </div>
-                                </div>
-                                <div class="video-caption">
-                                    "Resultado impressionante! Recomendo muito o método."
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video Slide 4 - Juliana Fundo (extra) -->
-                    <!-- SUBSTITUA 'VIDEO_ID_JULIANA' PELO ID DO VÍDEO DA JULIANA -->
-                    <div class="swiper-slide video-slide" data-video-id="VIDEO_ID_JULIANA">
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://img.youtube.com/vi/VIDEO_ID_JULIANA/maxresdefault.jpg" alt="Thumbnail do vídeo de Juliana Fundo">
-                                <div class="play-button">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                            </div>
-                            <div class="video-info">
-                                <div class="video-client">
-                                    <div class="client-avatar">
-                                        <img src="https://ui-avatars.com/api/?name=Juliana+Fundo&background=FFD700&color=000&size=40" alt="Juliana Fundo">
-                                    </div>
-                                    <div class="client-details">
-                                        <div class="client-name">Juliana Fundo</div>
-                                        <div class="client-title">Fisioterapeuta · Alemanha</div>
-                                    </div>
-                                </div>
-                                <div class="video-caption">
-                                    "Finalmente um método completo e bem explicado. Recomendo!"
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Video Slide 5 - Evodia João (extra) -->
-                    <!-- SUBSTITUA 'VIDEO_ID_EVODIA' PELO ID DO VÍDEO DA EVODIA -->
-                    <div class="swiper-slide video-slide" data-video-id="VIDEO_ID_EVODIA">
-                        <div class="video-card">
-                            <div class="video-thumbnail">
-                                <img src="https://img.youtube.com/vi/VIDEO_ID_EVODIA/maxresdefault.jpg" alt="Thumbnail do vídeo de Evodia João">
+                                <img src="https://img.youtube.com/vi/lhdXnsRKBCg/maxresdefault.jpg" alt="Thumbnail do vídeo de Evodia João">
                                 <div class="play-button">
                                     <i class="fas fa-play"></i>
                                 </div>
@@ -1157,6 +1082,35 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Video Slide 3 - Sra Santa -->
+                    <!-- Link: https://www.youtube.com/shorts/zXo0kl5QEBs -->
+                    <!-- ID: zXo0kl5QEBs -->
+                    <div class="swiper-slide video-slide" data-video-id="zXo0kl5QEBs">
+                        <div class="video-card">
+                            <div class="video-thumbnail">
+                                <img src="https://img.youtube.com/vi/zXo0kl5QEBs/maxresdefault.jpg" alt="Thumbnail do vídeo da Sra Santa">
+                                <div class="play-button">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                            <div class="video-info">
+                                <div class="video-client">
+                                    <div class="client-avatar">
+                                        <img src="https://ui-avatars.com/api/?name=Sra+Santa&background=FFD700&color=000&size=40" alt="Sra Santa">
+                                    </div>
+                                    <div class="client-details">
+                                        <div class="client-name">Sra Santa</div>
+                                        <div class="client-title">Cliente · Luanda</div>
+                                    </div>
+                                </div>
+                                <div class="video-caption">
+                                    "Resultado impressionante! Recomendo muito o método."
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                 </div>
                 
                 <!-- Navigation -->
@@ -1169,7 +1123,7 @@
         </div>
     </section>
 
-    <!-- Modal para Vídeos do YouTube -->
+    <!-- Modal para Vídeos do YouTube Shorts -->
     <div id="videoModal" class="video-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -1375,8 +1329,8 @@
             document.querySelectorAll('.video-slide').forEach(slide => {
                 slide.addEventListener('click', function() {
                     const videoId = this.getAttribute('data-video-id');
-                    if (videoId && videoId !== 'VIDEO_ID_EGIDIA' && videoId !== 'VIDEO_ID_ISABEL' && videoId !== 'VIDEO_ID_SANTA') {
-                        // Construct YouTube embed URL with autoplay
+                    if (videoId && videoId !== '') {
+                        // Construct YouTube embed URL with autoplay for Shorts
                         modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
                         modal.classList.add('show');
                         document.body.style.overflow = 'hidden'; // Prevent scrolling
