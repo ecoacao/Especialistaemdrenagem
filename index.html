@@ -718,6 +718,124 @@
             color: var(--primary);
         }
 
+        /* Preço com marketing */
+        .price-container {
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .old-price {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.2rem;
+        }
+
+        .old-price .old-value {
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+        }
+
+        .old-price .old-small {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .price {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .price .current-value {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--primary);
+        }
+
+        .price .current-small {
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .economy-tag {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-3px);
+            }
+        }
+
+        .economy-tag i {
+            font-size: 1rem;
+        }
+
+        .limited-offer {
+            background: rgba(255, 215, 0, 0.15);
+            color: var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: 1px dashed var(--primary);
+            margin-top: 0.5rem;
+        }
+
+        .limited-offer i {
+            color: var(--primary);
+            animation: spin 2s infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         /* Navigation Buttons */
         .swiper-button-prev,
         .swiper-button-next {
@@ -920,28 +1038,6 @@
             backdrop-filter: blur(5px);
         }
 
-        .price {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            color: var(--primary);
-            margin: 2rem 0;
-            display: flex;
-            align-items: baseline;
-            justify-content: center;
-            gap: 0.2rem;
-        }
-
-        .price small {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .price-currency {
-            font-size: 1.8rem;
-            color: var(--text-secondary);
-        }
-
         /* Guarantee Section */
         .guarantee {
             display: flex;
@@ -1059,8 +1155,30 @@
                 font-size: 0.85rem;
             }
 
+            .old-price {
+                font-size: 1.5rem;
+            }
+            
+            .old-price .old-value {
+                font-size: 1.5rem;
+            }
+            
             .price {
                 font-size: 3rem;
+            }
+            
+            .price .current-value {
+                font-size: 3rem;
+            }
+            
+            .economy-tag {
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
+            }
+            
+            .limited-offer {
+                padding: 0.4rem 1rem;
+                font-size: 0.85rem;
             }
 
             .guarantee {
@@ -1115,7 +1233,19 @@
                 height: 224px;
             }
 
+            .old-price {
+                font-size: 1.3rem;
+            }
+            
+            .old-price .old-value {
+                font-size: 1.3rem;
+            }
+            
             .price {
+                font-size: 2.5rem;
+            }
+            
+            .price .current-value {
                 font-size: 2.5rem;
             }
 
@@ -1364,7 +1494,7 @@
                         <i class="fas fa-tag"></i>
                     </div>
                     <div class="detail-info">
-                        <div class="detail-label">Valor</div>
+                        <div class="detail-label">Valor Promocional</div>
                         <div class="detail-value highlight">Kz 5.000,00</div>
                     </div>
                 </div>
@@ -1378,7 +1508,7 @@
                 </p>
             </div>
 
-            <a href="https://wa.me/244940548881?text=Olá! Acabei de fazer o pagamento do ebook Drenagem do Zero. Segue em anexo o comprovativo." 
+            <a href="https://wa.me/244940548881?text=Olá! Acabei de fazer o pagamento do ebook Drenagem do Zero no valor promocional de 5.000 Kz. Segue em anexo o comprovativo." 
                class="whatsapp-btn" 
                target="_blank">
                 <i class="fab fa-whatsapp"></i>
@@ -1448,14 +1578,30 @@
                     <span class="feature-tag"><i class="fas fa-hand-sparkles"></i> Conteúdo prático</span>
                 </div>
                 
-                <div class="price">
-                    <span class="price-currency">Kz</span>
-                    <span>5.000</span>
-                    <small>,00</small>
+                <!-- Preço com marketing -->
+                <div class="price-container">
+                    <div class="old-price">
+                        <span class="price-currency">Kz</span>
+                        <span class="old-value">10.000</span>
+                        <span class="old-small">,00</span>
+                    </div>
+                    <div class="price">
+                        <span class="price-currency">Kz</span>
+                        <span class="current-value">5.000</span>
+                        <span class="current-small">,00</span>
+                    </div>
+                    <div class="economy-tag">
+                        <i class="fas fa-tag"></i>
+                        <span>Economize 5.000 Kz</span>
+                    </div>
+                    <div class="limited-offer">
+                        <i class="fas fa-clock"></i>
+                        <span>Oferta por tempo limitado!</span>
+                    </div>
                 </div>
                 
                 <button id="comprarBtn" class="btn btn-primary" style="padding: 1.25rem 3rem; font-size: 1.1rem;">
-                    <i class="fas fa-shopping-cart"></i> Comprar Agora
+                    <i class="fas fa-shopping-cart"></i> Comprar Agora com 50% OFF
                 </button>
                 
                 <div style="margin-top: 1.5rem; color: var(--text-secondary); font-size: 0.9rem;">
